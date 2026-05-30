@@ -1,0 +1,489 @@
+body {
+  text-align: center;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #74ebd5, #9face6);
+}
+
+h1 {
+  font-size: 32px;
+}
+
+.setting-box {
+  background: white;
+  border-radius: 16px;
+  padding: 15px;
+  margin: 10px auto;
+  max-width: 240px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+label {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+input {
+  width: 120px;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 5px;
+}
+
+input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 10px rgba(52,152,219,0.4);
+  outline: none;
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  margin: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+#startButton {
+  background: linear-gradient(135deg, #00c853, #64dd17);
+  color: white;
+}
+
+#resetMoneyButton {
+  background: linear-gradient(135deg, #ff5252, #ff1744);
+  color: white;
+}
+
+#message {
+  font-size: 28px;
+  font-weight: bold;
+  color: red;
+  margin: 20px;
+}
+
+.bet-text {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.player-info {
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  padding: 10px;
+  margin: 10px auto;
+  max-width: 320px;
+}
+
+.active-player {
+  border: 3px solid red;
+  background: #fff1f1;
+}
+
+#cardArea {
+  display: grid;
+  grid-template-columns: repeat(4, 90px);
+  gap: 18px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card {
+  width: 90px;
+  height: 130px;
+  background: white;
+  color: #222;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  font-size: 28px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card.flip {
+  animation: revealCard 0.4s ease;
+}
+
+@keyframes revealCard {
+  0% {
+    transform: scale(0.85);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.card-a {
+  background: gold;
+  color: black;
+}
+
+.card-7 {
+  background: #2ecc71;
+}
+
+.card-j {
+  background: #3498db;
+}
+
+.card-q {
+  background: #9b59b6;
+}
+
+.card-k {
+  background: #e74c3c;
+}
+
+.card-joker {
+  background: linear-gradient(45deg, red, orange, yellow, green, cyan, blue, purple);
+  color: white;
+  animation: jokerGlow 1.5s infinite alternate;
+}
+
+@keyframes jokerGlow {
+  from {
+    box-shadow: 0 0 10px rgba(255,0,255,0.5);
+  }
+  to {
+    box-shadow: 0 0 25px rgba(255,0,255,1);
+  }
+}
+
+.result-box {
+  background: linear-gradient(135deg, #fff3b0, #ffd166);
+  border: 4px solid gold;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 360px;
+  box-shadow: 0 0 25px gold;
+  animation: pop 0.4s ease;
+}
+
+.result-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.result-message {
+  font-size: 28px;
+  font-weight: bold;
+  color: red;
+  margin: 10px 0;
+}
+
+.result-bet {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.notice-box {
+  margin: 15px auto;
+  padding: 14px;
+  max-width: 360px;
+  border-radius: 16px;
+  font-weight: bold;
+  animation: pop 0.3s ease;
+}
+
+.notice-box.normal {
+  background: #e3f2fd;
+  border: 2px solid #2196f3;
+}
+
+.notice-box.joker {
+  background: linear-gradient(135deg, #ff00cc, #3333ff);
+  color: white;
+  box-shadow: 0 0 20px #ff00cc;
+}
+
+.notice-box.q {
+  background: linear-gradient(135deg, #9b59b6, #e1bee7);
+  color: white;
+  box-shadow: 0 0 16px #9b59b6;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  #message {
+    font-size: 24px;
+  }
+
+  #cardArea {
+    grid-template-columns: repeat(4, 68px);
+    gap: 12px;
+  }
+
+  .card {
+    width: 68px;
+    height: 100px;
+    font-size: 18px;
+  }
+
+  input {
+    width: 90px;
+    font-size: 16px;
+  }
+
+  .player-info {
+    max-width: 280px;
+    font-size: 15px;
+  }
+}
+
+.card-joker.flip {
+  animation:
+    revealCard 0.4s ease,
+    jokerGlow 1.5s infinite alternate;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 22px;
+  padding: 24px;
+  max-width: 340px;
+  width: 85%;
+  text-align: center;
+  animation: pop 0.3s ease;
+}
+
+.q-modal {
+  border: 4px solid #9b59b6;
+  box-shadow: 0 0 25px #9b59b6;
+}
+
+#qUseButton {
+  background: linear-gradient(135deg, #9b59b6, #e1bee7);
+  color: white;
+}
+
+#qCancelButton {
+  background: #ddd;
+  color: #333;
+}
+
+.info-modal {
+  border: 4px solid #3498db;
+  box-shadow: 0 0 25px #3498db;
+}
+
+#infoModalButton {
+  background: linear-gradient(135deg, #3498db, #74b9ff);
+  color: white;
+}
+
+.taken-card {
+  background: #999 !important;
+  opacity: 0.45;
+  box-shadow: none !important;
+  cursor: default;
+}
+
+.card-10 {
+  background: #555;
+  color: white;
+}
+
+.card-a {
+  background: #f1c40f;
+  color: black;
+  box-shadow: 0 0 6px rgba(241,196,15,0.35);
+}
+
+.card-7 {
+  background: #2ecc71;
+  box-shadow: 0 0 6px rgba(46,204,113,0.3);
+}
+
+.card-j {
+  background: #3498db;
+  box-shadow: 0 0 6px rgba(52,152,219,0.3);
+}
+
+.card-q {
+  background: #9b59b6;
+  box-shadow: 0 0 6px rgba(155,89,182,0.3);
+}
+
+.card-k {
+  background: #e74c3c;
+  box-shadow: 0 0 8px rgba(231,76,60,0.45);
+}
+
+.card-10 {
+  background: #4a4a4a;
+  color: #e0e0e0;
+  box-shadow: none;
+}
+
+.card-joker {
+  background: linear-gradient(45deg, red, orange, yellow, green, cyan, blue, purple);
+  color: white;
+  box-shadow:
+    0 0 15px rgba(255,255,255,0.8),
+    0 0 30px rgba(255,0,255,0.7),
+    0 0 50px rgba(255,215,0,0.5);
+  animation: jokerGlow 1.5s infinite alternate;
+}
+
+.card.card-a {
+  box-shadow: 0 0 8px rgba(241,196,15,0.45) !important;
+}
+
+.card.card-7 {
+  box-shadow: 0 0 8px rgba(46,204,113,0.35) !important;
+}
+
+.card.card-j {
+  box-shadow: 0 0 8px rgba(52,152,219,0.35) !important;
+}
+
+.card.card-q {
+  box-shadow: 0 0 8px rgba(155,89,182,0.35) !important;
+}
+
+.card.card-k {
+  box-shadow: 0 0 10px rgba(231,76,60,0.5) !important;
+}
+
+.card.card-10 {
+  box-shadow: none !important;
+}
+
+.card.card-joker {
+  box-shadow:
+    0 0 15px rgba(255,255,255,0.8),
+    0 0 30px rgba(255,0,255,0.8),
+    0 0 50px rgba(255,215,0,0.6) !important;
+}
+
+.card.card-a {
+  filter: drop-shadow(0 0 10px rgba(241,196,15,0.8)) !important;
+}
+
+.card.card-7 {
+  filter: drop-shadow(0 0 8px rgba(46,204,113,0.7)) !important;
+}
+
+.card.card-j {
+  filter: drop-shadow(0 0 8px rgba(52,152,219,0.7)) !important;
+}
+
+.card.card-q {
+  filter: drop-shadow(0 0 8px rgba(155,89,182,0.7)) !important;
+}
+
+.card.card-k {
+  filter: drop-shadow(0 0 12px rgba(231,76,60,0.9)) !important;
+}
+
+.card.card-10 {
+  filter: none !important;
+}
+
+.card.card-joker {
+  filter:
+    drop-shadow(0 0 12px rgba(255,255,255,0.7))
+    drop-shadow(0 0 24px rgba(255,0,255,0.6))
+    drop-shadow(0 0 36px rgba(255,215,0,0.5)) !important;
+}
+
+.card:not(.card-a):not(.card-7):not(.card-10):not(.card-j):not(.card-q):not(.card-k):not(.card-joker) {
+  background: linear-gradient(135deg, #1e293b, #334155);
+  color: white;
+}
+
+.card {
+  position: relative;
+}
+
+.card-center {
+  font-size: 34px;
+  font-weight: bold;
+}
+
+.card-corner {
+  position: absolute;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.card-corner.top {
+  top: 8px;
+  left: 8px;
+}
+
+.card-corner.bottom {
+  bottom: 8px;
+  right: 8px;
+  transform: rotate(180deg);
+}
+
+.card-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-icon {
+  font-size: 28px;
+}
+
+.card-label {
+  font-size: 20px;
+  font-weight: bold;
+}

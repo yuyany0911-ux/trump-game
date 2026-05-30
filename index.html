@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>試作型トランプゲーム</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>試作型トランプゲーム</h1>
+
+  <div class="setting-box">
+    <label>👥 人数</label><br>
+    <input id="playerCountInput" type="number" min="2" max="4" value="2">
+  </div>
+
+  <div class="setting-box">
+    <label>💰 ベット数</label><br>
+    <input id="betInput" type="number" value="100">
+  </div>
+
+  <div class="setting-box">
+    <label>🎮 プレイヤー1名</label><br>
+    <input id="player1Name" type="text" value="プレイヤー1">
+  </div>
+
+  <div class="setting-box">
+    <label>🎮 プレイヤー2名</label><br>
+    <input id="player2Name" type="text" value="プレイヤー2">
+  </div>
+
+  <div class="setting-box" id="player3Box">
+    <label>🎮 プレイヤー3名</label><br>
+    <input id="player3Name" type="text" value="プレイヤー3">
+  </div>
+
+  <div class="setting-box" id="player4Box">
+    <label>🎮 プレイヤー4名</label><br>
+    <input id="player4Name" type="text" value="プレイヤー4">
+  </div>
+
+  <button id="startButton">ゲーム開始</button>
+  <button id="resetMoneyButton">所持金リセット</button>
+
+  <p id="message">ゲーム開始を押してください</p>
+
+  <div id="statusArea"></div>
+  <div id="noticeArea"></div>
+  <div id="resultArea"></div>
+
+  <div id="cardArea"></div>
+
+  <!-- Q専用モーダル -->
+  <div id="qModal" class="modal">
+    <div class="modal-content q-modal">
+      <h2>👑 Qカード発動</h2>
+      <p id="qModalText">Qを使ってターンをスキップしますか？</p>
+
+      <button id="qUseButton">使う</button>
+      <button id="qCancelButton">使わない</button>
+    </div>
+  </div>
+
+  <!-- 汎用通知モーダル -->
+  <div id="infoModal" class="modal">
+    <div class="modal-content info-modal">
+      <h2 id="infoModalTitle">通知</h2>
+      <p id="infoModalText"></p>
+      <button id="infoModalButton">OK</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
