@@ -487,3 +487,27 @@ button:hover {
   font-size: 20px;
   font-weight: bold;
 }
+
+#mobileTurnBar {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  #mobileTurnBar {
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid red;
+    border-radius: 14px;
+    padding: 10px;
+    margin: 10px auto;
+    max-width: 340px;
+
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+  }
+}

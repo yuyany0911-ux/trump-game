@@ -1,3 +1,4 @@
+const mobileTurnBar = document.getElementById("mobileTurnBar");
 const startButton = document.getElementById("startButton");
 const resetMoneyButton = document.getElementById("resetMoneyButton");
 const cardArea = document.getElementById("cardArea");
@@ -85,19 +86,40 @@ function saveMoney() {
 
 function applyMoneyResult(resultType, targetIndex) {
   if (resultType === "aWin") {
-    players[targetIndex].money += betAmount * 2;
+    const reward = betAmount * 2;
+    const totalReward = reward * (players.length - 1);
+
+    players.forEach((player, index) => {
+      if (index === targetIndex) {
+        player.money += totalReward;
+      } else {
+        player.money -= reward;
+      }
+    });
   }
 
   if (resultType === "jokerKWin") {
-    players[targetIndex].money += betAmount;
+    const reward = betAmount;
+    const totalReward = reward * (players.length - 1);
+
+    players.forEach((player, index) => {
+      if (index === targetIndex) {
+        player.money += totalReward;
+      } else {
+        player.money -= reward;
+      }
+    });
   }
 
   if (resultType === "kLose") {
+    const penalty = betAmount;
+    const totalPenalty = penalty * (players.length - 1);
+
     players.forEach((player, index) => {
       if (index === targetIndex) {
-        player.money -= betAmount;
+        player.money -= totalPenalty;
       } else {
-        player.money += betAmount;
+        player.money += penalty;
       }
     });
   }
@@ -179,6 +201,25 @@ function updateStatus() {
 
     statusArea.appendChild(playerInfo);
   });
+
+    if (players[currentPlayer]) {
+      const current = players[currentPlayer];
+
+      const counts = {};
+      current.cards.forEach(card => {
+        counts[card] = (counts[card] || 0) + 1;
+      });
+
+      const cardText = Object.keys(counts)
+        .map(card => `${card}×${counts[card]}`)
+        .join(" / ");
+
+      mobileTurnBar.innerHTML = `
+        <strong>▶ ${current.name} のターン</strong><br>
+        💰 ${current.money} / 🃏 ${cardText || "保有なし"}
+      `;
+    }
+
 }
 
 function nextTurn() {
@@ -412,7 +453,9 @@ function startGame() {
         return;
       }
 
-      nextTurn();
+      setTimeout(() => {
+        nextTurn();
+      }, 700);
     });
 
     cardArea.appendChild(cardElement);
