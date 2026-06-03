@@ -325,11 +325,19 @@ function startGame() {
       cardElement.classList.add("flip");
 
       setTimeout(() => {
-        cardElement.innerHTML = `
-          <div class="card-corner top">${card}</div>
-          <div class="card-center">${getCardIcon(card)}</div>
-          <div class="card-corner bottom">${card}</div>
-        `;
+        if (card === "Joker") {
+          cardElement.innerHTML = `
+            <div class="joker-side left">J<br>O<br>K<br>E<br>R</div>
+            <div class="card-center">🃏</div>
+            <div class="joker-side right">J<br>O<br>K<br>E<br>R</div>
+          `;
+        } else {
+          cardElement.innerHTML = `
+            <div class="card-corner top">${card}</div>
+            <div class="card-center">${getCardIcon(card)}</div>
+            <div class="card-corner bottom">${card}</div>
+          `;
+        }
 
         playSound("card");
 
@@ -481,3 +489,4 @@ document
   .addEventListener("input", updateNameInputs);
 
 updateNameInputs();
+
